@@ -1,33 +1,18 @@
-const Http = new XMLHttpRequest();
-const yourUrl='https://invictus94.github.io/MyHome/getLight';
 
-window.onload = function() {
-    let value = {element: "barium"};
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", yourUrl, true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify({
-        value: value
-    }));
+window.onload = function () {
 
-    var xhr = new XMLHttpRequest();
-// we defined the xhr
+    // $.ajax({
+    //     url:"https://jsonstorage.net/api/items",
+    //     type:"POST",
+    //     data:'{"light1":"false"}',
+    //     contentType:"application/json; charset=utf-8",
+    //     dataType:"json",
+    //     success: function(data, textStatus, jqXHR){
+    //             console.log(data);
+    //     }
+    // });  
 
-xhr.onreadystatechange = function () {
-    if (this.readyState != 4) return;
-
-    if (this.status == 200) {
-        var data = JSON.parse(this.responseText);
-
-        // we get the returned data
-    }
-
-    // end of state change: it can be after some time (async)
-};
-
-xhr.open('GET', yourUrl, true);
-xhr.send();
 };
 
 class Lights {
@@ -48,5 +33,19 @@ Lights.lightState = Boolean(0);
 
 function changeLightState() {
     Lights.changeState();
-   console.log(Lights.getCurrentStatus());
+   // console.log(Lights.getCurrentStatus());
+
+    $.ajax({
+        url:"https://jsonstorage.net/api/items/e144ed31-7a6c-4a1b-8248-cf58a5c342be",
+        type:"PUT",
+        data:`{"light1":"${Lights.getCurrentStatus()}"}`,
+        contentType:"application/json; charset=utf-8",
+        dataType:"json",
+        success: function(data, textStatus, jqXHR){
+            console.log(data);
+        }
+    }); 
 }
+
+
+// e144ed31-7a6c-4a1b-8248-cf58a5c342be
