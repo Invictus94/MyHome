@@ -1,5 +1,5 @@
 const Http = new XMLHttpRequest();
-const yourUrl='file:///V:/Arduino/Projects/Relay_Test/Web/index.html/getLight';
+const yourUrl='https://invictus94.github.io/MyHome/getLight';
 
 window.onload = function() {
     let value = {element: "barium"};
@@ -30,10 +30,6 @@ xhr.open('GET', yourUrl, true);
 xhr.send();
 };
 
-window.post = function(url, data) {
-    return fetch(url, {method: "POST", body: JSON.stringify(data)});
-  }
-
 class Lights {
 
     static changeState() {
@@ -52,6 +48,5 @@ Lights.lightState = Boolean(0);
 
 function changeLightState() {
     Lights.changeState();
-   //console.log(Lights.getCurrentStatus());
-   post("post/data/here", {element: "osmium"});
+   console.log(Lights.getCurrentStatus());
 }
