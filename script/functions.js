@@ -19,9 +19,9 @@ class Lights {
 
     static changeState() {
         if (Boolean(Lights.lightState))
-            Lights.lightState = Boolean(0);
+            Lights.lightState = 0;
         else
-            Lights.lightState = Boolean(1);
+            Lights.lightState = 1;
     }
 
     static getCurrentStatus() {
@@ -29,7 +29,7 @@ class Lights {
     }
 }
 
-Lights.lightState = Boolean(0);
+Lights.lightState = 0;
 
 function changeLightState() {
     Lights.changeState();
